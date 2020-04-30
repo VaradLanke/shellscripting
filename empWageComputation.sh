@@ -10,12 +10,13 @@ do
 	1)	whours=$((RANDOM%10))
 		if [ $(($whours+$twhours)) -le 100 ]
 		then
-		salary=$(( $salary + $(( $whours * $hourlywage )) ))
+		dailywage=$(( $whours * $hourlywage ))
+		salary=$(( $salary + $dailywage ))
 			if [ $whours -lt 9 ]
 			then
-				echo "(Part-Time) : Present : $salary = $whours x $hourlywage"
+				echo "(Part-Time) : Present : $dailywage = $whours x $hourlywage"
 			else
-				echo "(Full-Time) : Present : $salary = $whours x $hourlywage"
+				echo "(Full-Time) : Present : $dailywage = $whours x $hourlywage"
 			fi
 			twhours=$(($twhours + $whours))
 		else
