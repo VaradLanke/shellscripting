@@ -1,14 +1,18 @@
 #!/bin/bash
 ispresent=1
-dailywage=100
+hourlywage=20
+salary=0
 echo "Welcome to Wage Computation Program on Master"
-for(( count=0;count<=10;count++ ))
+for(( days=1;days<=20;days++ ))
 do
 	status=$(($RANDOM%2))
 	if [ $status -eq $ispresent ]
 	then
-		echo "Present"
+		whours=$((RANDOM%10))
+		salary=$(( $salary + $(( $whours * $hourlywage )) ))
+		echo "Present : $salary = $whours x $hourlywage"
 	else
 		echo "Absent"
 	fi
 done
+echo "Final Salary : " $salary
