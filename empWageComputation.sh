@@ -6,9 +6,8 @@ echo "Welcome to Wage Computation Program on Master"
 for(( days=1;days<=20;days++ ))
 do
 	status=$(($RANDOM%2))
-	if [ $status -eq $ispresent ]
-	then
-		whours=$((RANDOM%10))
+	case $status in
+	1)	whours=$((RANDOM%10))
 		salary=$(( $salary + $(( $whours * $hourlywage )) ))
 		if [ $whours -lt 9 ]
 		then
@@ -16,8 +15,9 @@ do
 		else
 			echo "(Full-Time) : Present : $salary = $whours x $hourlywage"
 		fi
-	else
-		echo "Absent"
-	fi
+	;;
+	0)	echo "Absent."
+	;;
+	esac
 done
 echo "Final Salary : " $salary
