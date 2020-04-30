@@ -1,25 +1,29 @@
 #!/bin/bash
-ispresent=1
 hourlywage=20
 salary=0
-wdays=0
+twhours=0
 echo "Welcome to Wage Computation Program on Master"
-for(( days=1;days<=20;days++ ))
+while [ $twhours -le 100 ]
 do
 	status=$(($RANDOM%2))
 	case $status in
 	1)	whours=$((RANDOM%10))
-		salary=$(( $salary + $(( $whours * $hourlywage )) ))
-		if [ $whours -lt 9 ]
+		if [ $(($whours+$twhours)) -le 100 ]
 		then
-			echo "(Part-Time) : Present : $salary = $whours x $hourlywage"
+		salary=$(( $salary + $(( $whours * $hourlywage )) ))
+			if [ $whours -lt 9 ]
+			then
+				echo "(Part-Time) : Present : $salary = $whours x $hourlywage"
+			else
+				echo "(Full-Time) : Present : $salary = $whours x $hourlywage"
+			fi
+			twhours=$(($twhours + $whours))
 		else
-			echo "(Full-Time) : Present : $salary = $whours x $hourlywage"
+			break
 		fi
-		wdays=$(($wdays + 1))
 	;;
 	0)	echo "Absent."
 	;;
 	esac
 done
-echo "Final Salary :  $salary  ($wdays days)" 
+echo "Final Salary :  $salary : $twhours hours" 
