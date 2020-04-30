@@ -3,7 +3,8 @@ hourlywage=20
 salary=0
 twhours=0
 day=0
-echo "Welcome to Wage Computation Program on Master"
+echo "Welcome to Wage Computation Program"
+echo "-----------------------------------"
 while [ $twhours -le 100 ]
 do
 	status=$(($RANDOM%2))
@@ -26,11 +27,12 @@ do
 		fi
 	;;
 	0)	echo "Absent."
+		day=$(($day + 1))
 	;;
 	esac
 done
 function getTotalWorkingHours(){
-	echo "Total Working Hours : " $twhours
+	echo "Total Working Hours : $twhours"
 }
-echo "Final Salary :  $salary"
+echo  "-----------Final Salary(Rs.) : $salary -----------"
 getTotalWorkingHours
