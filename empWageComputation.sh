@@ -2,6 +2,7 @@
 hourlywage=20
 salary=0
 twhours=0
+day=0
 echo "Welcome to Wage Computation Program on Master"
 while [ $twhours -le 100 ]
 do
@@ -12,11 +13,12 @@ do
 		then
 		dailywage=$(( $whours * $hourlywage ))
 		salary=$(( $salary + $dailywage ))
+		day=$(($day + 1))
 			if [ $whours -lt 9 ]
 			then
-				echo "(Part-Time) : Present : $dailywage = $whours x $hourlywage"
+				echo "(Part-Time) : Present : Day-$day : $dailywage = $whours x $hourlywage"
 			else
-				echo "(Full-Time) : Present : $dailywage = $whours x $hourlywage"
+				echo "(Full-Time) : Present : Day-$day : $dailywage = $whours x $hourlywage"
 			fi
 			twhours=$(($twhours + $whours))
 		else
