@@ -10,7 +10,12 @@ do
 	then
 		whours=$((RANDOM%10))
 		salary=$(( $salary + $(( $whours * $hourlywage )) ))
-		echo "Present : $salary = $whours x $hourlywage"
+		if [ $whours -lt 9 ]
+		then
+			echo "(Part-Time) : Present : $salary = $whours x $hourlywage"
+		else
+			echo "(Full-Time) : Present : $salary = $whours x $hourlywage"
+		fi
 	else
 		echo "Absent"
 	fi
