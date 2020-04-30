@@ -26,4 +26,8 @@ do
 	;;
 	esac
 done
-echo "Final Salary :  $salary : $twhours hours" 
+function getTotalWorkingHours(){
+	echo "Total Working Hours : " $twhours
+}
+echo "Final Salary :  $salary"
+getTotalWorkingHours
